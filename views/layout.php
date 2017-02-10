@@ -2,13 +2,26 @@
 <html>
 <head>
 	<title></title>
+<script type="text/javascript" src="index.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/0.3.0/speechkitt.min.js"></script>
 <script>
 if (annyang) {
   // Let's define a command.
   var commands = {
-    'what time is it': function() { window.location.href = "?controller=question&action=ask&query=what+time+is+it"; }
+
+    'what time is it': function() { 
+    	window.location.href = "?controller=question&action=ask&query=what+time+is+it"; 
+    },
+
+    'what do i have on today': function() {
+    	window.location.href = "?controller=question&action=ask&query=what+do+i+have+on+today";
+    },
+
+    'when do i have soccer': function() {
+    	window.location.href = "?controller=question&action=ask&query=when+do+i+have+soccer";
+    }
+
   };
 
   // Add our commands to annyang
@@ -40,6 +53,9 @@ if (annyang) {
 	    		console.log(timezone);
 	    	}
 	    })
+
+	    var speech = $("#timeofday").html();
+	    speak();
   	});
 </script>
 </html>
