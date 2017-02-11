@@ -1,41 +1,33 @@
-function checkCompatibilty () {
-                if(!('speechSynthesis' in window)){
-                    alert('Your browser is not supported. If google chrome, please upgrade!!');
-                }
-            };
+/*
+ * Check for browser support
+ */
+var supportMsg = document.getElementById('msg');
 
-            checkCompatibilty();
+if ('speechSynthesis' in window) {
+    console.log("Speech Synthesis Ready");
+} else {
+    supportMsg.innerHTML = 'Sorry your browser <strong>does not support</strong> speech synthesis.<br>Try this in <a href="http://www.google.co.uk/intl/en/chrome/browser/canary.html">Chrome Canary</a>.';
+    supportMsg.classList.add('not-supported');
+}
 
-            var voiceOptions = document.getElementById('voiceOptions');
-            var volumeSlider = document.getElementById('volumeSlider');
-            var rateSlider = document.getElementById('rateSlider');
-            var pitchSlider = document.getElementById('pitchSlider');
-            var myText = "9:08PM";
+// Create a new utterance for the specified text and add it to
+// the queue.
+function speak(text) {
+  // Create a new instance of SpeechSynthesisUtterance.
+    var msg = new SpeechSynthesisUtterance();
+  
+  // Set the text.
+    msg.text = text;
+  
+  // Set the attributes.
+    msg.volume = parseFloat(1);
+    msg.rate = parseFloat(1);
+    msg.pitch = parseFloat(1);
 
-            var voiceMap = [];
+    msg.voice = speechSynthesis.getVoices().filter(function(voice) { return voice.name == "Fiona"; })[0];
+        console.log("Voice is Fred")
 
-            function loadVoices () {
-                var voices = speechSynthesis.getVoices();
-                for (var i = 0; i < voices.length; i++) {
-                    var voice = voices[i];
-                    var option = document.createElement('option');
-                    option.value = voice.name;
-                    option.innerHTML = voice.name;
-                    voiceOptions.appendChild(option);
-                    voiceMap[voice.name] = voice;
-                };
-            };
+  // Queue this utterance.
+    window.speechSynthesis.speak(msg);
+}
 
-            window.speechSynthesis.onvoiceschanged = function(e){
-                loadVoices();
-            };
-
-            function speak () {
-                var msg = new SpeechSynthesisUtterance();
-                msg.volume = volumeSlider.value;
-                msg.voice = voiceMap[voiceOptions.value];
-                msg.rate = rateSlider.value;
-                msg.Pitch = pitchSlider.value;
-                msg.text = myText.value;
-                window.speechSynthesis.speak(msg);
-            };

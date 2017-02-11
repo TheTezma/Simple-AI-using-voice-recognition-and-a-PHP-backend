@@ -2,16 +2,19 @@
 <html>
 <head>
 	<title></title>
-<script type="text/javascript" src="index.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/0.3.0/speechkitt.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script>
+
+
 if (annyang) {
   // Let's define a command.
   var commands = {
 
     'what time is it': function() { 
-    	window.location.href = "?controller=question&action=ask&query=what+time+is+it"; 
+    	window.location.href = "?controller=question&action=ask&query=what+time+is+it";
+      console.log("what time is it?");
     },
 
     'what do i have on today': function() {
@@ -20,7 +23,8 @@ if (annyang) {
 
     'when do i have soccer': function() {
     	window.location.href = "?controller=question&action=ask&query=when+do+i+have+soccer";
-    }
+    },
+
 
   };
 
@@ -36,9 +40,10 @@ if (annyang) {
 
 <?php require_once 'routes.php'; ?>
 
+<span id="result"></span>
+
 </body>
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js">
-</script>
+<script src="index.js"></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jstimezonedetect/1.0.4/jstz.min.js">
 </script>
 <script>
@@ -52,10 +57,10 @@ if (annyang) {
 	    	success: function(data) {
 	    		console.log(timezone);
 	    	}
-	    })
+	    });
 
-	    var speech = $("#timeofday").html();
-	    speak();
-  	});
+      speak($("#result").html());
+
+    });
 </script>
 </html>

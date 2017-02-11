@@ -7,31 +7,31 @@ $DailySchedule = "";
 function DailySchedule($Day) {
 	switch ($Day) {
 		case 'Monday':
-			echo $Day." PE and Music";
+			echo "<span id='result'>PE and Music</span>";
 			break;
 												 	
 		case 'Tuesday':
-			echo $Day." Nothing";
+			echo "<span id='result'>Nothing</span>";
 			break;
 
 		case 'Wednesday':
-			echo $Day." Science";
+			echo "<span id='result'>Science</span>";
 			break;
 
 		case 'Thursday':
-			echo $Day." Soccer at 5pm";
+			echo "<span id='result'>Soccer at 5pm</span>";
 			break;
 
 		case 'Friday':
-			echo $Day." Science and Library";
+			echo "<span id='result'>Science and Library</span>";
 			break;
 
 		case 'Saturday':
-			echo "It's the weekend, you have no plans!";
+			echo "<span id='result'>It's the weekend, you have no plans!</span>";
 			break;
 
 		case 'Sunday':
-			echo "It's the weekend, you have no plans!";
+			echo "<span id='result'>It's the weekend, you have no plans!</span>";
 			break;
 
 		default:
@@ -41,10 +41,10 @@ function DailySchedule($Day) {
 }
 
 function TimeOfDay() {
-	echo "<span id='timeofday'>The time is: " . date('h:i:s A')."</span>";
+	echo "<span id='result'>".date('h:i A')."</span>";
 }
 
 function SoccerSchedule() {
-	echo "Soccer is on Thursday at 5pm";
+	echo "<span id='result'>Soccer is on Thursday at 5pm</span>";
 }
 ?>
