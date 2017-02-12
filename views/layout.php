@@ -17,6 +17,10 @@ if (annyang) {
       console.log("what time is it?");
     },
 
+    'what is the time': function() {
+    	window.location.href = "?controller=question&action=ask&query=what+time+is+it";
+    },
+
     'what do i have on today': function() {
     	window.location.href = "?controller=question&action=ask&query=what+do+i+have+on+today";
     },
@@ -24,6 +28,10 @@ if (annyang) {
     'when do i have soccer': function() {
     	window.location.href = "?controller=question&action=ask&query=when+do+i+have+soccer";
     },
+
+    'google *stuff': function(tag) {
+    	window.location.href = "https://www.google.com.au/?gfe_rd=cr&ei=t-eeWIHuLPDc8we9irMw#q=" + tag;
+    }	
 
 
   };
