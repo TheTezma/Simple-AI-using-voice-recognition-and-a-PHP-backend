@@ -1,0 +1,19 @@
+#result {
+	display: none;
+	font-size: 64px;
+	font-family: 'Roboto', sans-serif;
+	color: #333;
+}
+
+body {
+	background-color: #f7f7f7;
+}
+
+.Absolute-Center {
+	height: 150px;
+	width: auto;
+	text-align: center;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}

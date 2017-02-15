@@ -4,7 +4,9 @@
 	<title></title>
 <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/0.3.0/speechkitt.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="index.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css">
 <script>
 
 
@@ -17,7 +19,7 @@ if (annyang) {
       console.log("what time is it?");
     },
 
-    'what is the time': function() {
+    "what's the time": function() {
     	window.location.href = "?controller=question&action=ask&query=what+time+is+it";
     },
 
@@ -39,19 +41,20 @@ if (annyang) {
   // Add our commands to annyang
   annyang.addCommands(commands);
 
-  // Start listening.
   annyang.start();
 }
 </script>
 </head>
 <body>
 
+<div class="Absolute-Center">
 <?php require_once 'routes.php'; ?>
+</div>
 
-<span id="result"></span>
+<span id="result" style="display:none"></span>
+<span id="pagedisplay"></span>
 
 </body>
-<script src="index.js"></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jstimezonedetect/1.0.4/jstz.min.js">
 </script>
 <script>
@@ -68,6 +71,8 @@ if (annyang) {
 	    });
 
       speak($("#result").html());
+
+      $("#result").fadeIn(1500);
 
     });
 </script>

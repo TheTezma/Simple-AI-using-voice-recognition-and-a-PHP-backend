@@ -30,4 +30,3 @@ function speak(text) {
   // Queue this utterance.
     window.speechSynthesis.speak(msg);
 }
-
