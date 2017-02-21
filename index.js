@@ -30,3 +30,37 @@ function speak(text) {
   // Queue this utterance.
     window.speechSynthesis.speak(msg);
 }
+
+if (annyang) {
+  // Let's define a command.
+  var commands = {
+
+    'what time is it': function() { 
+      window.location.href = "?controller=question&action=ask&query=what+time+is+it";
+      console.log("what time is it?");
+    },
+
+    "what's the time": function() {
+      window.location.href = "?controller=question&action=ask&query=what+time+is+it";
+    },
+
+    'what do i have on today': function() {
+      window.location.href = "?controller=question&action=ask&query=what+do+i+have+on+today";
+    },
+
+    'when do i have soccer': function() {
+      window.location.href = "?controller=question&action=ask&query=when+do+i+have+soccer";
+    },
+
+    'google *stuff': function(tag) {
+      window.location.href = "https://www.google.com.au/?gfe_rd=cr&ei=t-eeWIHuLPDc8we9irMw#q=" + tag;
+    } 
+
+
+  };
+
+  // Add our commands to annyang
+  annyang.addCommands(commands);
+
+  annyang.start();
+}

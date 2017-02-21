@@ -1,54 +1,25 @@
+<?
+require_once 'src/Mustache/Autoloader.php';
+Mustache_Autoloader::register();
+$Mustache = new Mustache_Engine;
+?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>AI</title>
 <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/0.3.0/speechkitt.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="index.js"></script>
 <link rel="stylesheet" type="text/css" href="style.css">
-<script>
-
-
-if (annyang) {
-  // Let's define a command.
-  var commands = {
-
-    'what time is it': function() { 
-    	window.location.href = "?controller=question&action=ask&query=what+time+is+it";
-      console.log("what time is it?");
-    },
-
-    "what's the time": function() {
-    	window.location.href = "?controller=question&action=ask&query=what+time+is+it";
-    },
-
-    'what do i have on today': function() {
-    	window.location.href = "?controller=question&action=ask&query=what+do+i+have+on+today";
-    },
-
-    'when do i have soccer': function() {
-    	window.location.href = "?controller=question&action=ask&query=when+do+i+have+soccer";
-    },
-
-    'google *stuff': function(tag) {
-    	window.location.href = "https://www.google.com.au/?gfe_rd=cr&ei=t-eeWIHuLPDc8we9irMw#q=" + tag;
-    }	
-
-
-  };
-
-  // Add our commands to annyang
-  annyang.addCommands(commands);
-
-  annyang.start();
-}
-</script>
 </head>
 <body>
 
 <div class="Absolute-Center">
-<?php require_once 'routes.php'; ?>
+<?php
+require_once 'routes.php'; 
+$Mustache->render('{{ test }}', array("test" => "w"));
+?>
 </div>
 
 <span id="result" style="display:none"></span>
